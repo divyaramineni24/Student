@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enrollment List</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Enrollment List</h1>
+    <a href="/enrollments/new">Add New Enrollment</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Actions</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="enrollment : ${enrollments}">
+                <td th:text="${enrollment.id}"></td>
+                <td th:text="${enrollment.student.name}"></td>
+                <td th:text="${enrollment.course.name}"></td>
+                <td>
+                    <a th:href="@{/enrollments/{id}(id=${enrollment.id})}">Edit</a>
+                </td>
+				<td>
+                    <a th:href="@{/enrollments/delete/{id}(id=${enrollment.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
